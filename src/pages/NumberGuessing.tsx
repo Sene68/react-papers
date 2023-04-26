@@ -54,7 +54,13 @@ export const NumberGuessing = () => {
         }
     }
 
-    // Reset 추가도 필요
+    const reset = () => {
+        setGuessedNums([])
+        dispatch({ type: "SET_VALUE", payload: 0 });
+        dispatch({ type: "SET_MESSAGE", payload: "" });
+        dispatch({ type: "SET_ANSWER", payload: Math.floor(Math.random() * 100) + 1 });
+    }
+
     return(
         <div className="bg-gradient-to-r from-violet-500 to-indigo-400 w-full h-screen">
             <div className="absolute w-1/2 min-w-[580px] translate-x-[-50%] translate-y-[-50%] top-1/2 left-1/2 bg-white px-2.5 py-12 rounded-md grid justify-items-center">
@@ -76,6 +82,8 @@ export const NumberGuessing = () => {
                 <p className="font-mono">No. of Guesses: {guessedNums.length}</p>
                 <p className="font-mono">Guessed Numbers are: {state.value}</p>
                 
+                <br/>
+                <button className="font-mono w-40 py-4 bg-violet-800 text-white border-none rounded-md text-lg font-semibold mb-8" onClick={reset}>RESET</button>
             </div>
         </div>
     )
