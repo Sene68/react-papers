@@ -1,21 +1,24 @@
-import React, { useState, useReducer } from "react"
+import React, { useReducer } from "react"
 
 interface State {
     value: number;
     message: string;
     answer: number;
+    guessedNums: number[];
 }
 
 type Action =
   | { type: "SET_VALUE"; payload: number }
   | { type: "SET_MESSAGE"; payload: string }
-  | { type: "SET_ANSWER"; payload: number };
+  | { type: "SET_ANSWER"; payload: number }
+  | { type: "SET_GUESSED_NUMS"; payload: number[] };
 
 
 const initialState: State = {
     value: 0,
     message: "",
     answer: Math.floor(Math.random() * 100) + 1,
+    guessedNums: []
 };
 
 const reducer = (state: State, action: Action) => {
@@ -26,14 +29,14 @@ const reducer = (state: State, action: Action) => {
             return { ...state, message: action.payload };
         case "SET_ANSWER":
             return { ...state, answer: action.payload };
+        case "SET_GUESSED_NUMS":
+            return { ...state, guessedNums: action.payload };
         default:
             return state;
     }
 }
 
 export const NumberGuessing = () => {
-    const [guessedNums, setGuessedNums] = useState<number[]>([])
-
     const [state, dispatch] = useReducer(reducer, initialState)
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,9 +45,11 @@ export const NumberGuessing = () => {
     }
 
     const play = () => {
-        const { value, answer } = state;
+        const { value, answer, guessedNums } = state;
+        
+        guessedNums.push(value)
+        dispatch({ type: "SET_GUESSED_NUMS", payload: guessedNums})
 
-        setGuessedNums([...guessedNums, value]) //이 영역도 reducer로 처리하면댐
         if (value < answer) {
             dispatch({ type: "SET_MESSAGE", payload: "Your guess is too low." });
         } else if (value > answer) {
@@ -55,7 +60,7 @@ export const NumberGuessing = () => {
     }
 
     const reset = () => {
-        setGuessedNums([])
+        dispatch({ type: "SET_GUESSED_NUMS", payload: []})
         dispatch({ type: "SET_VALUE", payload: 0 });
         dispatch({ type: "SET_MESSAGE", payload: "" });
         dispatch({ type: "SET_ANSWER", payload: Math.floor(Math.random() * 100) + 1 });
@@ -79,7 +84,7 @@ export const NumberGuessing = () => {
                 <button className="font-mono w-40 py-4 bg-violet-800 text-white border-none rounded-md text-lg font-semibold mb-8" onClick={play}>GUESS</button>
 
                 <p className="font-mono">{state.message}</p>
-                <p className="font-mono">No. of Guesses: {guessedNums.length}</p>
+                <p className="font-mono">No. of Guesses: {state.guessedNums.length}</p>
                 <p className="font-mono">Guessed Numbers are: {state.value}</p>
                 
                 <br/>
