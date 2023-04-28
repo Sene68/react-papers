@@ -3,6 +3,7 @@ import { Home } from "./pages/Home";
 import { RandomColor } from "./pages/RandomColor";
 import { ColorSlider } from "./pages/ColorSlider";
 import { NumberGuessing } from "./pages/NumberGuessing";
+import { DigitalClock } from "./pages/DigitalClock";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/random-color" element={<RandomColor />} />
         <Route path="/color-slider" element={<ColorSlider />} />
         <Route path="/number-guessing" element={<NumberGuessing />} />
+        <Route path="/digital-clock" element={<DigitalClock />} />
     </Routes>
   );
 }

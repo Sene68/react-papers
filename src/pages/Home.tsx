@@ -25,6 +25,12 @@ export const Home = () => {
                             <FontAwesomeIcon icon={faArrowRight} size="2xs" className='bg-violet-500 text-white h-full w-10 rounded-md border-0 cursor-pointer' />
                         </Link>
                     </div>
+                    <div className="bg-white h-12 px-1 py-1.5 mt-1.5 flex items-center justify-between">
+                        <span className="text-lg font-normal font-mono">Digital Clock</span>
+                        <Link to="/digital-clock">
+                            <FontAwesomeIcon icon={faArrowRight} size="2xs" className='bg-violet-500 text-white h-full w-10 rounded-md border-0 cursor-pointer' />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
