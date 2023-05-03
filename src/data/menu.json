@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "link": "/random-color",
+            "title": "Random Color"
+        },
+        {
+            "link": "/color-slider",
+            "title": "Color Slider"
+        },
+        {
+            "link": "/number-guessing",
+            "title": "Number Guessing Game"
+        },
+        {
+            "link": "/digital-clock",
+            "title": "Digital Clock"
+        },
+        {
+            "link": "/card-theme",
+            "title": "Card With Dynamic Theme"
+        }
+    ]
+}
