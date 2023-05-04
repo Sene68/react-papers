@@ -5,6 +5,7 @@ import { ColorSlider } from "./pages/ColorSlider";
 import { NumberGuessing } from "./pages/NumberGuessing";
 import { DigitalClock } from "./pages/DigitalClock";
 import { CardWithDynamicTheme } from "./pages/CardWithDynamicTheme";
+import { RockPaperScissor } from "./pages/RockPaperScissor";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path="/color-slider" element={<ColorSlider />} />
         <Route path="/number-guessing" element={<NumberGuessing />} />
         <Route path="/digital-clock" element={<DigitalClock />} />
-        <Route path="/card-theme" element={<CardWithDynamicTheme/>} />
+        <Route path="/card-theme" element={<CardWithDynamicTheme />} />
+        <Route path="/rock-paper-scissor" element={<RockPaperScissor />} />
     </Routes>
   );
 }
