@@ -1,10 +1,28 @@
 import { faHandRock, faHandScissors, faHandPaper } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useState } from "react"
 
 export const RockPaperScissor = () => {
+    const [playerPick, setPlayerPick] = useState('')
 
     const screenStyle = {
         background: `linear-gradient(135deg, #ffcf1b, #ff8b1b)`
+    }
+
+    const play = (value: number) => {
+        switch (value) {
+            case 1:
+                setPlayerPick('ROCK')
+                break
+            case 2:
+                setPlayerPick('SCISSORS')
+                break
+            case 3:
+                setPlayerPick('PAPER')
+                break
+            default:
+        }
+        
     }
 
 
@@ -22,18 +40,27 @@ export const RockPaperScissor = () => {
                     </p>
                 </div>
                 <div className="w-[90%] m-auto flex justify-around">
-                    <button className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer">
+                    <button 
+                        onClick={() => play(1)}
+                        className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
+                    >
                         <FontAwesomeIcon icon={faHandRock} />
                     </button>
-                    <button className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer">
+                    <button 
+                        onClick={() => play(2)}
+                        className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
+                    >
                         <FontAwesomeIcon icon={faHandScissors} />
                     </button>
-                    <button className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer">
+                    <button 
+                        onClick={() => play(3)}
+                        className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
+                    >
                         <FontAwesomeIcon icon={faHandPaper} />
                     </button>
                 </div>
                 <div className="mt-[30px] text-center">
-                    <p></p>
+                    <p>{playerPick === '' ? '' : `You choose ${playerPick}` }</p>
                     <p></p>
                     <p></p>
                 </div>
