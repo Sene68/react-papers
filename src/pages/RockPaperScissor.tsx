@@ -4,25 +4,31 @@ import { useState } from "react"
 
 export const RockPaperScissor = () => {
     const [playerPick, setPlayerPick] = useState('')
+    const [computerPick, setComputerPick] = useState('')
 
     const screenStyle = {
         background: `linear-gradient(135deg, #ffcf1b, #ff8b1b)`
     }
 
     const play = (value: number) => {
+        const cpuValue = Math.floor(Math.random() * 3) + 1
+
+        setPlayerPick(getTextValue(value))
+        setComputerPick(getTextValue(cpuValue))
+        
+    }
+
+    const getTextValue = (value: number) => {
         switch (value) {
             case 1:
-                setPlayerPick('ROCK')
-                break
+                return 'ROCK'    
             case 2:
-                setPlayerPick('SCISSORS')
-                break
+                return 'SCISSORS'
             case 3:
-                setPlayerPick('PAPER')
-                break
+                return 'PAPER'
             default:
+                return ''
         }
-        
     }
 
 
@@ -61,7 +67,7 @@ export const RockPaperScissor = () => {
                 </div>
                 <div className="mt-[30px] text-center">
                     <p>{playerPick === '' ? '' : `You choose ${playerPick}` }</p>
-                    <p></p>
+                    <p>{computerPick === '' ? '' : `Computer choose ${computerPick}` }</p>
                     <p></p>
                 </div>
             </div>
