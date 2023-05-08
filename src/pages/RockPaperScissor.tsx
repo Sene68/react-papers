@@ -2,29 +2,48 @@ import { faHandRock, faHandScissors, faHandPaper } from "@fortawesome/free-solid
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 
+const answers = [
+    [
+        "DRAW",
+        "YOU WIN",
+        "YOU LOSE"
+    ],
+    [
+        "YOU LOSE",
+        "DRAW",
+        "YOU WIN"
+    ],
+    [
+        "YOU WIN",
+        "YOU LOSE",
+        "DRAW"
+    ]
+]
+
 export const RockPaperScissor = () => {
     const [playerPick, setPlayerPick] = useState('')
     const [computerPick, setComputerPick] = useState('')
+    const [result, setResult] = useState('')
 
     const screenStyle = {
         background: `linear-gradient(135deg, #ffcf1b, #ff8b1b)`
     }
 
     const play = (value: number) => {
-        const cpuValue = Math.floor(Math.random() * 3) + 1
+        const cpuValue = Math.floor(Math.random() * 3)
 
         setPlayerPick(getTextValue(value))
         setComputerPick(getTextValue(cpuValue))
-        
+        setResult(answers[value][cpuValue])
     }
 
     const getTextValue = (value: number) => {
         switch (value) {
-            case 1:
+            case 0:
                 return 'ROCK'    
-            case 2:
+            case 1:
                 return 'SCISSORS'
-            case 3:
+            case 2:
                 return 'PAPER'
             default:
                 return ''
@@ -47,19 +66,19 @@ export const RockPaperScissor = () => {
                 </div>
                 <div className="w-[90%] m-auto flex justify-around">
                     <button 
-                        onClick={() => play(1)}
+                        onClick={() => play(0)}
                         className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
                     >
                         <FontAwesomeIcon icon={faHandRock} />
                     </button>
                     <button 
-                        onClick={() => play(2)}
+                        onClick={() => play(1)}
                         className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
                     >
                         <FontAwesomeIcon icon={faHandScissors} />
                     </button>
                     <button 
-                        onClick={() => play(3)}
+                        onClick={() => play(2)}
                         className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
                     >
                         <FontAwesomeIcon icon={faHandPaper} />
@@ -68,7 +87,7 @@ export const RockPaperScissor = () => {
                 <div className="mt-[30px] text-center">
                     <p>{playerPick === '' ? '' : `You choose ${playerPick}` }</p>
                     <p>{computerPick === '' ? '' : `Computer choose ${computerPick}` }</p>
-                    <p></p>
+                    <p>{result}</p>
                 </div>
             </div>
         </div>
