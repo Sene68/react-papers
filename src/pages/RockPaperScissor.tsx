@@ -1,10 +1,16 @@
 import { faHandRock, faHandScissors, faHandPaper } from "@fortawesome/free-solid-svg-icons"
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 
 interface VersusState {
     you: number;
     computer: number;
+}
+
+interface PlayButtonProps {
+    onClick: () => void;
+    icon: IconDefinition;
 }
 
 const initialVersusState: VersusState = {
@@ -29,6 +35,21 @@ const answers = [
         "DRAW"
     ]
 ]
+
+const Choices = [
+    { value: 0, text: 'ROCK', icon: faHandRock },
+    { value: 1, text: 'SCISSORS', icon: faHandScissors },
+    { value: 2, text: 'PAPER', icon: faHandPaper },
+  ];
+  
+const PlayButton: React.FC<PlayButtonProps> = ({ onClick, icon }) => (
+    <button
+        onClick={onClick}
+        className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
+    >
+        <FontAwesomeIcon icon={icon} />
+    </button>
+);
 
 export const RockPaperScissor = () => {
     const [playerPick, setPlayerPick] = useState('')
@@ -90,24 +111,13 @@ export const RockPaperScissor = () => {
                     </p>
                 </div>
                 <div className="w-[90%] m-auto flex justify-around">
-                    <button 
-                        onClick={() => play(0)}
-                        className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
-                    >
-                        <FontAwesomeIcon icon={faHandRock} />
-                    </button>
-                    <button 
-                        onClick={() => play(1)}
-                        className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
-                    >
-                        <FontAwesomeIcon icon={faHandScissors} />
-                    </button>
-                    <button 
-                        onClick={() => play(2)}
-                        className="bg-[#ffd51b] text-black border-none text-[50px] h-[100px] w-[100px] rounded-full outline-none cursor-pointer"
-                    >
-                        <FontAwesomeIcon icon={faHandPaper} />
-                    </button>
+                    {Choices.map((choice) => (
+                        <PlayButton
+                        key={choice.value}
+                        onClick={() => play(choice.value)}
+                        icon={choice.icon}
+                        />
+                    ))}
                 </div>
                 <div className="mt-[30px] text-center">
                     <p>{playerPick === '' ? '' : `You choose ${playerPick}` }</p>
