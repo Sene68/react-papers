@@ -2,6 +2,16 @@ import { faHandRock, faHandScissors, faHandPaper } from "@fortawesome/free-solid
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 
+interface VersusState {
+    you: number;
+    computer: number;
+}
+
+const initialVersusState: VersusState = {
+    you: 0,
+    computer: 0
+}
+
 const answers = [
     [
         "DRAW",
@@ -24,6 +34,7 @@ export const RockPaperScissor = () => {
     const [playerPick, setPlayerPick] = useState('')
     const [computerPick, setComputerPick] = useState('')
     const [result, setResult] = useState('')
+    const [versusState, setVersusState] = useState<VersusState>(initialVersusState)
 
     const screenStyle = {
         background: `linear-gradient(135deg, #ffcf1b, #ff8b1b)`
@@ -35,6 +46,20 @@ export const RockPaperScissor = () => {
         setPlayerPick(getTextValue(value))
         setComputerPick(getTextValue(cpuValue))
         setResult(answers[value][cpuValue])
+
+        if (answers[value][cpuValue] === 'YOU WIN') {
+            setVersusState((prevState) => ({
+                ...prevState,
+                you: prevState.you + 1
+            }))
+        }
+
+        if (answers[value][cpuValue] === 'YOU LOSE') {
+            setVersusState((prevState) => ({
+                ...prevState,
+                computer: prevState.computer + 1
+            }))
+        }
     }
 
     const getTextValue = (value: number) => {
@@ -57,11 +82,11 @@ export const RockPaperScissor = () => {
                 <div className="mb-[50px] text-right">
                     <p>
                         Computer :  
-                        <span> 0</span>
+                        <span> {versusState.computer}</span>
                     </p>
                     <p>
                         You : 
-                        <span> 0</span>
+                        <span> {versusState.you}</span>
                     </p>
                 </div>
                 <div className="w-[90%] m-auto flex justify-around">
