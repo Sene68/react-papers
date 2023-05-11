@@ -23,6 +23,10 @@
         {
             "link": "/rock-paper-scissor",
             "title": "Rock Paper Scissor"
+        },
+        {
+            "link": "/random-password-generator",
+            "title": "Random Password Generator"
         }
     ]
 }
