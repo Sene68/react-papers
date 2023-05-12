@@ -27,6 +27,25 @@ export const RandomPasswordGenerator = () => {
         setPassword(pwd);
     }
 
+    async function copyTextToClipboard(text: string) {
+        if ('clipboard' in navigator) {
+            return await navigator.clipboard.writeText(text);
+        } else {
+            return document.execCommand('copy', true, text);
+        }
+    }
+
+    const handleCopyClick = () => {
+        copyTextToClipboard(password)
+        .then(() => {
+            setTimeout(() => {
+            }, 1500);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
 
     return(
         <div style={screenStyle} className="w-full h-screen">
@@ -39,7 +58,7 @@ export const RandomPasswordGenerator = () => {
                 <button className="w-[11%] h-[38px] bg-transparent border-none text-white text-lg float-right text-right cursor-pointer" onClick={generatePassword}>
                     <FontAwesomeIcon icon={faRandom} />
                 </button>
-                <button className="w-[11%] h-[38px] bg-transparent border-none text-white text-lg float-right text-right cursor-pointer">
+                <button className="w-[11%] h-[38px] bg-transparent border-none text-white text-lg float-right text-right cursor-pointer" onClick={handleCopyClick}>
                     <FontAwesomeIcon icon={faCopy} />
                 </button>
                 <input className="appearance-none w-[85%] h-[3.5px] mt-[80px] bg-[#e2e2e2] rounded-md" type="range" min={8} max={20} value={length} onChange={(e) => handleChangeLength(Number(e.target.value))}/>
