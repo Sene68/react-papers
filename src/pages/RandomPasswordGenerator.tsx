@@ -23,7 +23,7 @@ export const RandomPasswordGenerator = () => {
             const randomNumber = Math.floor(Math.random() * chars.length);
             pwd += chars.substring(randomNumber, randomNumber +1);
         }
-        
+
         setPassword(pwd);
     }
 
@@ -43,7 +43,7 @@ export const RandomPasswordGenerator = () => {
                     <FontAwesomeIcon icon={faCopy} />
                 </button>
                 <input className="appearance-none w-[85%] h-[3.5px] mt-[80px] bg-[#e2e2e2] rounded-md" type="range" min={8} max={20} value={length} onChange={(e) => handleChangeLength(Number(e.target.value))}/>
-                <h3 className="inline-block w-[10%] text-[#1c1e21] bg-white text-center py-[5px] ml-[3%] rounded-md text-lg">8</h3>
+                <h3 className="inline-block w-[10%] text-[#1c1e21] bg-white text-center py-[5px] ml-[3%] rounded-md text-lg">{length}</h3>
             </div>
         </div>
     )
