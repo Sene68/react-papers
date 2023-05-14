@@ -7,6 +7,7 @@ import { DigitalClock } from "./pages/DigitalClock";
 import { CardWithDynamicTheme } from "./pages/CardWithDynamicTheme";
 import { RockPaperScissor } from "./pages/RockPaperScissor";
 import { RandomPasswordGenerator } from "./pages/RandomPasswordGenerator";
+import { RollTheDice } from "./pages/RollTheDice";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/card-theme" element={<CardWithDynamicTheme />} />
         <Route path="/rock-paper-scissor" element={<RockPaperScissor />} />
         <Route path="/random-password-generator" element={<RandomPasswordGenerator />} />
+        <Route path="/roll-the-dice" element={<RollTheDice />} />
     </Routes>
   );
 }

@@ -27,6 +27,10 @@
         {
             "link": "/random-password-generator",
             "title": "Random Password Generator"
+        },
+        {
+            "link": "/roll-the-dice",
+            "title": "Roll The Dice"
         }
     ]
 }
