@@ -2,6 +2,11 @@ import { faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix } 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 
+interface DiceProps {
+    firstDice: number;
+    secondDice: number;
+}
+
 const dices = [
     {
         "diceValue" : 1,
@@ -30,7 +35,7 @@ const dices = [
 ]
 
 export const RollTheDice = () => {
-    const [dice, setDice] = useState({
+    const [dice, setDice] = useState<DiceProps>({
         firstDice : 0,
         secondDice : 0
     })
@@ -55,15 +60,25 @@ export const RollTheDice = () => {
         }))
     }
 
+    
+
     return(
         <div style={screenStyle} className="w-full h-screen">
             <div className="w-[400px] p-[50px] bg-white absolute translate-x-[-50%] translate-y-[-50%] top-1/2 left-1/2 rounded-xl shadow-lg flex flex-col items-center">
                 <div className="w-[90%] flex justify-around">
-                    <FontAwesomeIcon icon={dices[dice.firstDice].icon} style={diceStyle} className="w-24 h-24" />
-                    <FontAwesomeIcon icon={dices[dice.secondDice].icon} style={diceStyle} className="w-24 h-24" />
+                    <FontAwesomeIcon 
+                        icon={dices[dice.firstDice].icon} 
+                        style={diceStyle} 
+                        className="w-24 h-24"
+                    />
+                    <FontAwesomeIcon 
+                        icon={dices[dice.secondDice].icon} 
+                        style={diceStyle} 
+                        className="w-24 h-24"
+                    />
                 </div>
                 <p className="text-base my-[30px] font-medium">
-                    Text
+                    Your roll is {dices[dice.firstDice].diceValue + dices[dice.secondDice].diceValue}
                 </p>
                 <button 
                     className="bg-[#e92e3d] border-none outline-none text-white py-[15px] w-[150px] tracking-[1px] rounded-md"
