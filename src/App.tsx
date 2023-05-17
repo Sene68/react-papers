@@ -8,6 +8,7 @@ import { CardWithDynamicTheme } from "./pages/CardWithDynamicTheme";
 import { RockPaperScissor } from "./pages/RockPaperScissor";
 import { RandomPasswordGenerator } from "./pages/RandomPasswordGenerator";
 import { RollTheDice } from "./pages/RollTheDice";
+import { ResponsiveImageSlider } from "./pages/ResponsiveImageSlider";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/rock-paper-scissor" element={<RockPaperScissor />} />
         <Route path="/random-password-generator" element={<RandomPasswordGenerator />} />
         <Route path="/roll-the-dice" element={<RollTheDice />} />
+        <Route path="/responsive-image-slider" element={<ResponsiveImageSlider />} />
     </Routes>
   );
 }

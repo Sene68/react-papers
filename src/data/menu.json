@@ -31,6 +31,10 @@
         {
             "link": "/roll-the-dice",
             "title": "Roll The Dice"
+        },
+        {
+            "link": "/responsive-image-slider",
+            "title": "Responsive Image Slider"
         }
     ]
 }
