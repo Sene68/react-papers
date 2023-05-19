@@ -11,10 +11,12 @@ export const ResponsiveImageSlider = () => {
         background: `linear-gradient(135deg, #8052ec, #d161ff)`,
     }
 
-    const next = () => {
+    const prev = () => {
+        setCurrentIndex((nextIndex) => (3 + nextIndex - 1) % 3);
+    }
 
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % 3);
-        
+    const next = () => {
+        setCurrentIndex((prevIndex) => (3 + prevIndex + 1) % 3);
     }
 
     return(
@@ -30,7 +32,12 @@ export const ResponsiveImageSlider = () => {
                     <button className="bg-transparent w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]"></button>
                     <button className="bg-transparent w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]"></button>
                 </div>
-                <button className="w-[40px] h-[40px] absolute bg-[#8052ec] text-white m-auto inset-y-0 border-none rounded-sm font-bold text-lg left-[15px]"> &lt; </button>
+                <button 
+                    onClick={() => prev()}
+                    className="w-[40px] h-[40px] absolute bg-[#8052ec] text-white m-auto inset-y-0 border-none rounded-sm font-bold text-lg left-[15px]"
+                > 
+                    &lt;
+                </button>
                 <button 
                     onClick={() => next()}
                     className="w-[40px] h-[40px] absolute bg-[#8052ec] text-white m-auto inset-y-0 border-none rounded-sm font-bold text-lg right-[15px]"
