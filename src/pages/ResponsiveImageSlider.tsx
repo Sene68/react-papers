@@ -28,9 +28,9 @@ export const ResponsiveImageSlider = () => {
                     <img style={{display: currentIndex === 2 ? "block" : "none"}} className="relative w-full" src={slider_img_3} alt=""/>
                 </div>
                 <div className="w-[150px] mt-[20px] flex items-center justify-around">
-                    <button className="bg-transparent w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]"></button>
-                    <button className="bg-transparent w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]"></button>
-                    <button className="bg-transparent w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]"></button>
+                    <button style={{backgroundColor: currentIndex === 0 ? "#8052ec" : "transparent"}} className="w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]"></button>
+                    <button style={{backgroundColor: currentIndex === 1 ? "#8052ec" : "transparent"}} className="w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]"></button>
+                    <button style={{backgroundColor: currentIndex === 2 ? "#8052ec" : "transparent"}} className="w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]"></button>
                 </div>
                 <button 
                     onClick={() => prev()}
