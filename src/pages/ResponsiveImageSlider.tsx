@@ -48,21 +48,13 @@ export const ResponsiveImageSlider = () => {
                     )}
                 </div>
                 <div className="w-[150px] mt-[20px] flex items-center justify-around">
-                    <button 
-                        onClick={() => setCurrentIndex(0)}
-                        style={{backgroundColor: currentIndex === 0 ? "#8052ec" : "transparent"}} 
-                        className="w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]">     
-                    </button>
-                    <button 
-                        onClick={() => setCurrentIndex(1)}
-                        style={{backgroundColor: currentIndex === 1 ? "#8052ec" : "transparent"}} 
-                        className="w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]">
-                    </button>
-                    <button 
-                        onClick={() => setCurrentIndex(2)}
-                        style={{backgroundColor: currentIndex === 2 ? "#8052ec" : "transparent"}} 
-                        className="w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]">
-                    </button>
+                    {images.map((image) => 
+                        <button 
+                            onClick={() => setCurrentIndex(image.id)}
+                            style={{backgroundColor: currentIndex === image.id ? "#8052ec" : "transparent"}} 
+                            className="w-[13px] h-[13px] rounded-full border-[3px] border-solid border-[#8052ec]">     
+                        </button>
+                    )}
                 </div>
                 <button 
                     onClick={() => prev()}
