@@ -4,6 +4,26 @@ import slider_img_1 from '../src_assets/s_image1.jpg'
 import slider_img_2 from '../src_assets/s_image2.jpg'
 import slider_img_3 from '../src_assets/s_image3.jpg'
 
+interface SliderImgProps {
+    id: number;
+    image: string;
+}
+
+const images: SliderImgProps[] = [
+    {
+        id: 0,
+        image: slider_img_1
+    },
+    {
+        id: 1,
+        image: slider_img_2
+    },
+    {
+        id: 2,
+        image: slider_img_3
+    }
+]
+
 export const ResponsiveImageSlider = () => {
     const [currentIndex, setCurrentIndex] = useState<number>(0)
 
@@ -23,9 +43,9 @@ export const ResponsiveImageSlider = () => {
         <div style={screenStyle} className="w-full h-screen">
             <div className="w-[60%] min-w-[520px] p-[30px] bg-white absolute translate-x-[-50%] translate-y-[-50%] top-1/2 left-1/2 rounded-xl shadow-lg flex flex-col items-center">
                 <div className="relative w-full border-[1px] border-solid border-black">
-                    <img style={{display: currentIndex === 0 ? "block" : "none"}} className="relative w-full" src={slider_img_1} alt=""/>
-                    <img style={{display: currentIndex === 1 ? "block" : "none"}} className="relative w-full" src={slider_img_2} alt=""/>
-                    <img style={{display: currentIndex === 2 ? "block" : "none"}} className="relative w-full" src={slider_img_3} alt=""/>
+                    {images.map((image) => 
+                        <img style={{display: currentIndex === image.id ? "block" : "none"}} className="relative w-full" src={image.image} alt=""/>    
+                    )}
                 </div>
                 <div className="w-[150px] mt-[20px] flex items-center justify-around">
                     <button 
